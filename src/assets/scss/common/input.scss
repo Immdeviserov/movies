@@ -1,0 +1,18 @@
+.input {
+  padding: 5px;
+  font-size: $mainFontSize;
+  line-height: $mainLineHeight;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 300px;
+
+  &:focus {
+    border: 2px solid $primary-color;
+  }
+}
+
+.input-wrapper {
+  margin: 20px auto;
+  max-width: 300px;
+  justify-content: center;
+}
