@@ -92,4 +92,16 @@ section, .section {
   }
 }
 
+.img-r {
+  width: 100%;
+  height: auto;
+}
+
+.img-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 50px;
+}
+
 @import "./common.scss";
