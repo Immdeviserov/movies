@@ -1,6 +1,7 @@
 
 @import "utils/vars";
 @import "utils/reset";
+@import "utils/mixins";
 
 html {
   line-height: $mainLineHeight;
@@ -105,3 +106,8 @@ section, .section {
 }
 
 @import "./common.scss";
+
+
+.rounded {
+  border-radius: inherit;
+}

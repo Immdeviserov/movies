@@ -1,10 +1,45 @@
 .suggestion {
+  padding: 5px 0;
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  cursor: pointer;
+
+  @include create-mq($tableWidth) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px 20px;
+  }
+
+  &__name-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__name {
+    color: $primary-color;
+    @include heading;
+  }
+
+  &__year {
+    font-size: 12px;
+    font-style: italic;
+  }
 
   &__img {
     max-width: 100px;
+    border: 2px solid $border-base;
+    border-radius: 5%;
+  }
+
+  &:hover {
+    background-color: $border-base;
+
+    .suggestion__img {
+      border: 3px solid $primary-color;
+    }
   }
 }
 

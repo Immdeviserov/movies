@@ -1,0 +1,19 @@
+@mixin create-mq($width, $mode: 'min') {
+  @if ($width == 0) {
+    @content;
+  } @else {
+    @media screen and (#{$mode}-width: $width) {
+      @content;
+    }
+  }
+}
+
+@mixin heading($h: 1) {
+  @if ($h == 2) {
+    font-size: 18px;
+  } @else {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.6;
+  }
+}
