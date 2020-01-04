@@ -1,5 +1,9 @@
 <template>
-  <div class="suggestion">
+
+  <div
+    class="suggestion"
+    @click="toFilm(film.imdbID)"
+  >
     <div class="suggestion__img img-wrapper">
       <img
         :src="film.poster"
@@ -22,11 +26,18 @@
 </template>
 
 <script>
+import router from "@/routes";
+
 export default {
   props: {
     film: {
       type: Object,
       value: ""
+    }
+  },
+  methods: {
+    toFilm(imdbID) {
+      router.push(`/film/${imdbID}`);
     }
   }
 };

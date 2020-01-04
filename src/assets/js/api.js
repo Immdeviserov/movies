@@ -22,6 +22,15 @@ export const filmSearch = (name) => {
 };
 
 
-export function requestSearch(name) {
-  return axios.get(`${BaseUrl}?s=${name}&apikey=${apiKey}`);
+export function requestSearch(name, mode = 's') {
+  return axios.get(`${BaseUrl}?${mode}=${name}&apikey=${apiKey}`);
+}
+
+export function toCamelCase(obj) {
+  // функция превращает ВотТакие индексы в вотТакие
+  const translate = str => str[0].toLowerCase() + str.slice(1)
+
+  let pairs = Object.entries(obj);
+  return Object.fromEntries(pairs.map(pair => [translate(pair[0]), pair[1]])
+  )
 }

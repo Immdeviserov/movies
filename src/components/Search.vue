@@ -28,8 +28,8 @@
 
 <script>
 import axios from "axios";
-import Suggestion from "./Suggestion"
-import { testPath, requestSearch } from "../assets/js/api";
+import Suggestion from "./Suggestion";
+import { toCamelCase, requestSearch } from "../assets/js/api";
 
 export default {
   components: {
@@ -40,38 +40,42 @@ export default {
       search: "",
       suggestions: [
         {
-          title: 'The Guard',
-          year: '2011',
-          imdbID: 'tt4938602',
-          type: 'movie',
-          poster: 'https://m.media-amazon.com/images/M/MV5BMTY2ODkzMDgwM15BMl5BanBnXkFtZTcwMDA1Mjg1OA@@._V1_SX300.jpg'
+          title: "The Guard",
+          year: "2011",
+          imdbID: "tt4938602",
+          type: "movie",
+          poster:
+            "https://m.media-amazon.com/images/M/MV5BMTY2ODkzMDgwM15BMl5BanBnXkFtZTcwMDA1Mjg1OA@@._V1_SX300.jpg"
         },
         {
-          title: 'The Lion Guard',
-          year: '2016–',
-          imdbID: 'tt3793630',
-          type: 'series',
-          poster: 'https://m.media-amazon.com/images/M/MV5BMDNkZWIyN2EtOTIxMi00NTYzLTg2MGUtOTRhNDMwMzM3M2VmXkEyXkFqcGdeQXVyMDM0MzU2NA@@._V1_SX300.jpg'
+          title: "The Lion Guard",
+          year: "2016–",
+          imdbID: "tt3793630",
+          type: "series",
+          poster:
+            "https://m.media-amazon.com/images/M/MV5BMDNkZWIyN2EtOTIxMi00NTYzLTg2MGUtOTRhNDMwMzM3M2VmXkEyXkFqcGdeQXVyMDM0MzU2NA@@._V1_SX300.jpg"
         },
         {
-          title: 'Guard Dog',
-          year: '2004',
-          imdbID: 'tt0430159',
-          type: 'movie',
-          poster: 'https://m.media-amazon.com/images/M/MV5BMGUyNDNiMjEtYjc5Mi00MjYzLWEzZWYtYzM0NTVjYzI5Mzk0XkEyXkFqcGdeQXVyMTg2NzgzMDE@._V1_SX300.jpg'
+          title: "Guard Dog",
+          year: "2004",
+          imdbID: "tt0430159",
+          type: "movie",
+          poster:
+            "https://m.media-amazon.com/images/M/MV5BMGUyNDNiMjEtYjc5Mi00MjYzLWEzZWYtYzM0NTVjYzI5Mzk0XkEyXkFqcGdeQXVyMTg2NzgzMDE@._V1_SX300.jpg"
         },
         {
-          title: 'Eklavya: The Royal Guard',
-          year: '2007',
-          imdbID: 'tt0459605',
-          type: 'movie',
-          poster: 'https://m.media-amazon.com/images/M/MV5BM2FiM2YzMGMtNzhhZS00N2E3LWI3MDEtNzAxODIxNWY5ZTkzXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_SX300.jpg'
+          title: "Eklavya: The Royal Guard",
+          year: "2007",
+          imdbID: "tt0459605",
+          type: "movie",
+          poster:
+            "https://m.media-amazon.com/images/M/MV5BM2FiM2YzMGMtNzhhZS00N2E3LWI3MDEtNzAxODIxNWY5ZTkzXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_SX300.jpg"
         }
       ]
     };
   },
   methods: {
-    setLowerKeys (obj) {
+    setLowerKeys(obj) {
       let obj2 = {};
       for (let index in obj) {
         obj2[index.toLowerCase()] = obj[index];
@@ -79,16 +83,15 @@ export default {
       return obj2;
     },
     async onInput() {
-      this.setLowerKeys({Test: 'test'});
       const { data, meta } = await requestSearch(this.search);
-      if (data.Response === 'True') {
-        this.suggestions = data.Search.map(film => this.setLowerKeys(film))
+      if (data.Response === "True") {
+        this.suggestions = data.Search.map(film => toCamelCase(film));
       } else {
-        this.suggestions = ''
+        this.suggestions = "";
       }
     },
     test() {
-      console.log('test');
+      console.log("test");
     }
   }
 };
