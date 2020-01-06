@@ -34,3 +34,10 @@ export function toCamelCase(obj) {
   return Object.fromEntries(pairs.map(pair => [translate(pair[0]), pair[1]])
   )
 }
+
+export function dropNA (obj) {
+  for (let index in obj) {
+    obj[index] = obj[index] === 'N/A' ? '' : obj[index]
+  }
+  return obj
+}

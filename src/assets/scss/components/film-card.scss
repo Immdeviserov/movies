@@ -1,0 +1,12 @@
+.title-block {
+  display: flex;
+  justify-content: space-between;
+  &__img {
+    max-width: 120px;
+  }
+
+  &__right-column {
+    display: flex;
+    flex-direction: column;
+  }
+}
