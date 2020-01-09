@@ -29,8 +29,8 @@ export default {
   },
   methods: {
     async getFilm(imbdId) {
-      const { data, meta } = await requestSearch(imbdId, "i");
-      if (data.Response === "True") {
+      const { data, meta } = await requestSearch(imbdId, 'i');
+      if (data.Response === 'True') {
         this.filmFull = toCamelCase(data);
         this.filmFull.ratings = this.filmFull.ratings.map(rating =>
           toCamelCase(rating)

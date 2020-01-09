@@ -1,12 +1,87 @@
 .title-block {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   &__img {
     max-width: 120px;
   }
 
   &__right-column {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding: 0 5px;
+
+
+    @include create-mq($tableWidth) {
+      align-items: flex-start;
+      padding-left: 15px;
+    }
   }
+
+  &__rating {
+    background-color: $warning-color;
+    width: 80px;
+    border-radius: 5px;
+    font-size: 30px;
+    text-align: center;
+    padding: 5px;
+
+    .small {
+      font-size: $smallFontSize  ;
+    }
+  }
+
+  &__director{
+    padding: 10px 3px;
+  }
+
+  &__year  {
+    padding: 10px 3px;
+  }
+
+  &__genres {
+
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__genre {
+    font-size: $smallFontSize;
+    background-color: $neutral-secondary;
+    border-radius: 1px;
+    border: 1px solid $border-base;
+    padding: 3px 5px;
+  }
+
+}
+
+.main-block {
+  padding: 15px 0;
+
+  &__name {
+
+    font-weight: bold;
+    font-size: $largeFontSize;
+
+    @include create-mq($phoneWidth) {
+      text-align: center;
+    }
+
+    @include create-mq($tableWidth) {
+      font-size: $largeFontSize + $mqGrow;
+    }
+  }
+
+  &__plot {
+    padding: 5px 0;
+  }
+
+  &__actor {
+    display: inline;
+    cursor: pointer;
+    &:hover {
+    background-color: $warning-color;
+    text-decoration: underline;
+  }
+}
 }
